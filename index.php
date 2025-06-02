@@ -33,7 +33,7 @@
             Login
           </div>
           <div class="card-body">
-            <form action="http://localhost:8080/valida_login.php">
+            <form action="valida_login.php">
               <div class="form-group">
                 <input name="email" type="email" class="form-control" placeholder="E-mail">
               </div>
