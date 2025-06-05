@@ -1,5 +1,14 @@
 <?php
 require_once 'validar_acesso.php';
+
+$chamados = [];
+$file = fopen('arquivo.txt', 'r');
+while (!feof($file)) {
+  $registro = fgets($file);
+  $chamados[] = $registro;
+}
+
+fclose($file);
 ?>
 
 <html>
@@ -43,24 +52,21 @@ require_once 'validar_acesso.php';
           </div>
 
           <div class="card-body">
-
-            <div class="card mb-3 bg-light">
-              <div class="card-body">
-                <h5 class="card-title">Título do chamado...</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Categoria</h6>
-                <p class="card-text">Descrição do chamado...</p>
-
+            <?php
+            foreach ($chamados as $chamado) {
+              $chamado_dados = explode('#', $chamado);
+              if(count($chamado_dados) < 3){
+                continue;
+              }
+            ?>
+              <div class="card mb-3 bg-light">
+                <div class="card-body">
+                  <h5 class="card-title"><?php echo $chamado_dados[0]; ?></h5>
+                  <h6 class="card-subtitle mb-2 text-muted"><?php echo $chamado_dados[1]; ?></h6>
+                  <p class="card-text"><?php echo $chamado_dados[2]; ?></p>
+                </div>
               </div>
-            </div>
-
-            <div class="card mb-3 bg-light">
-              <div class="card-body">
-                <h5 class="card-title">Título do chamado...</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Categoria</h6>
-                <p class="card-text">Descrição do chamado...</p>
-
-              </div>
-            </div>
+            <? } ?>
 
             <div class="row mt-5">
               <div class="col-6">
