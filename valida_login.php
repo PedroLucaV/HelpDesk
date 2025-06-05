@@ -1,5 +1,10 @@
 <?php
 
+    session_start();
+
+    // $_SESSION['x'] = 'Oi, valor de sessão!';
+    // print_r($_SESSION);
+
     $usuario_autenticado = false;
     $usuarios_app = [
         ['email'=>'admin@test.com', 'senha'=>'1234'],
@@ -15,10 +20,12 @@
             $usuario_autenticado =  true;
         }
     }
-
+    // echo '<hr>';
     if($usuario_autenticado){
         echo 'Usuario Autenticado!';
+        $_SESSION['AUTH'] = true;
     }else{
+        $_SESSION['AUTH'] = false;
         header('Location: index.php?login=erro');
     }
 

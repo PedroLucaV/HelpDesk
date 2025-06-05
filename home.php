@@ -1,3 +1,10 @@
+<?php
+  session_start();
+  if(!$_SESSION['AUTH']){
+    header('Location: index.php?login=erro2');
+  }
+?>
+
 <html>
   <head>
     <meta charset="utf-8" />
