@@ -22,8 +22,9 @@
     }
     // echo '<hr>';
     if($usuario_autenticado){
-        echo 'Usuario Autenticado!';
+        // echo 'Usuario Autenticado!';
         $_SESSION['AUTH'] = true;
+        header('Location: home.php');
     }else{
         $_SESSION['AUTH'] = false;
         header('Location: index.php?login=erro');
